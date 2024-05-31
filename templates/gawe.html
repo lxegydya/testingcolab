@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobs</title>
+</head>
+<body>
+    <h1>Jobs</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Job</th>
+                <th>Pay</th>
+            </tr>
+        </thead>
+        <tbody id="peopleTable">
+            <!-- Data will be added here -->
+        </tbody>
+    </table>
+    <a href="/">Go to Imah</a>
+
+    <script>
+        // Ajax request to fetch people data
+        fetch('https://my-json-server.typicode.com/jjjosephhh/test-db-002/people')
+            .then(response => response.json())
+            .then(data => {
+                const peopleTable = document.getElementById('peopleTable');
+                data.forEach(person => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<td>${person.fname}</td><td>${person.lname}</td><td>${person.job}</td><td>${person.pay}</td>`;
+                    peopleTable.appendChild(row);
+                });
+            });
+    </script>
+</body>
+</html>

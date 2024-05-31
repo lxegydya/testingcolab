@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data People</title>
+  </head>
+  <body>
+    <h1>Data People</h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>age</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for person in people %}
+        <tr>
+          <td>{{ person.fname }}</td>
+          <td>{{ person.lname }}</td>
+          <td>{{ person.age }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br>
+    <button onclick="to_index()">Job people</button>
+    <script>
+        function to_index(){
+            window.location.href = '/job';
+        }
+    </script>
+  </body>
+</html>

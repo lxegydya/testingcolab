@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jobs</title>
+</head>
+<body>
+    <h1>Jobs</h1>
+    <table id="jobs-table" border="1">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Job</th>
+                <th>Pay</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                url: '/people',
+                type: 'GET',
+                success: function(response) {
+                    var people = response;
+                    var tbody = $('#jobs-table tbody');
+                    people.forEach(function(person) {
+                        tbody.append('<tr><td>' + person.fname + '</td><td>' + person.lname + '</td><td>' + person.job + '</td><td>' + person.pay + '</td></tr>');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

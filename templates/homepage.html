@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <style>
+        /* CSS styling */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .blue-button {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Homepage</h1>
+    <table id="peopleTable">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody id="peopleData">
+            <!-- Data will be filled dynamically using Ajax -->
+        </tbody>
+    </table>
+
+    <script>
+        // JavaScript Ajax request
+        const url = 'https://my-json-server.typicode.com/jjjosephhh/test-db-002/people';
+        const tableBody = document.getElementById('peopleData');
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(person => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<td>${person.fname}</td><td>${person.lname}</td><td>${person.age}</td>`;
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+
+     <!-- Tombol untuk berpindah ke laman job -->
+     <button class="blue-button" onclick="window.location.href='/jobs'">Go to Jobs</button>
+</body>
+</html>
